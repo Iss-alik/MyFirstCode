@@ -14,5 +14,6 @@ export class MainComponent {
   constructor()
   {
     this.telegram.MainButton.show();
+    this.telegram.BackButton.hide();
   }  
 }
