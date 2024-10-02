@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TelegramWebService } from './services/telegram-web.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,8 @@ import { RouterOutlet } from '@angular/router';
   template: `<router-outlet />`
 })
 export class AppComponent {
-
+  telgram = inject(TelegramWebService);
+  constructor(){
+    this.telgram.ready();
+  }
 }
