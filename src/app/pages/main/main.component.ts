@@ -13,7 +13,15 @@ export class MainComponent {
 
   constructor()
   {
+    this.sendData = this.sendData.bind(this)
+    this.telegram.MainButton.setText('Send');
     this.telegram.MainButton.show();
-    this.telegram.BackButton.hide();
-  }  
+    //this.telegram.BackButton.hide();
+    this.telegram.MainButton.onClick(this.sendData)
+  } 
+  
+  sendData()
+  {
+    this.telegram.sendData({text: 'any'});
+  }
 }
