@@ -1,45 +1,41 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 
+// интерфейс для функционала кнопок
 interface TgButton {
   show(): void;
   hide(): void;
   setText(text: string): void;
   onClick(fn: Function): void;
   offClick(fn: Function): void;
-  enable():void;
-  disable():void;
+  enable(): void;
+  disable(): void;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TelegramWebService {
   private window;
   tg;
-  constructor(@Inject(DOCUMENT) private _document) 
-  {
+  constructor(@Inject(DOCUMENT) private _document) {
     this.window = this._document.defaultView;
     this.tg = this.window.Telegram.WebApp;
   }
 
-  get MainButton() :TgButton 
-  {
+  get MainButton(): TgButton {
     return this.tg.MainButton;
   }
 
-  get BackButton(): TgButton
-  {
+  get BackButton(): TgButton {
     return this.tg.BackButton;
   }
 
-  SendData(data: object)
-  {
-    this.tg.SendData(JSON.stringify(data));
+  sendData(data: object) {
+    this.tg.sendData(JSON.stringify(data));
   }
 
-  ready()
-  {
+  ready() {
     this.tg.ready();
   }
 }
