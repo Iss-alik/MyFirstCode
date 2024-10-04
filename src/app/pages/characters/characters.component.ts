@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CharactersComponent implements OnInit, OnDestroy {
   
   constructor(private telegram: TelegramWebService,
-    private route: ActivatedRoute,
     private router: Router) 
     {this.goBack = this.goBack.bind(this);}
 
